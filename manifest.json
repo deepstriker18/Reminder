@@ -1,0 +1,20 @@
+{
+  "name": "Reminder",
+  "description": "Blocks listed social sites applications after 10 sec",
+  "version": "1.0",
+  "manifest_version": 2,
+  "background": {
+      "scripts": [
+          "background.js"
+      ],
+      "persistent": false
+  },
+  "permissions": [
+      "tabs",
+      "storage"
+  ],
+  "browser_action": {
+      "default_title": "Add website to block",
+      "default_popup": "popup.html"
+  }
+}
