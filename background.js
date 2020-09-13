@@ -17,24 +17,14 @@ async function foo() {
     console.log("Starting task");
     allBlockingUrls = await getAllKeys();
     (async function pollForCurrentTab() {
-
-        // your code logic here
-
         let tab = await getCurrentTab();
-
         if (tab !== undefined) {
-
             try {
                 let url = getHostName(tab.url);
                 let urlIdx = allBlockingUrls.indexOf(url);
-                // console.log(allBlockingUrls);
                 if (urlIdx !== -1) {
-
-                    console.log('found a blocking url')
                     let url = allBlockingUrls[urlIdx];
-
                     let result = await getDataFromStorage(url);
-
                     shouldBeBlocked(result, tab);
 
                     let resultDate = Date.parse(result.date);
@@ -108,9 +98,7 @@ async function shouldBeBlocked(result, tab) {
     currentDate.setHours(0, 0, 0, 0);
     if (resultDate.getTime() === currentDate.getTime()) {
         if (result.timeSpent >= TIME_TO_BLOCK_IN_SECONDS) {
-            console.log('code yha alert pe aaya')
-            alert("Kaam krle loser");
-
+            alert("Enough");
             try {
                 await closeTab(tab.id);
             } catch (err) {
